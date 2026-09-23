@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - Budi</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        nav ul { list-style: none; padding: 0; display: flex; gap: 20px; }
+        nav a { text-decoration: none; color: #333; font-weight: bold; }
+        form { max-width: 500px; }
+        label { display: block; margin-top: 15px; font-weight: bold; }
+        input, textarea, select { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        button { margin-top: 20px; padding: 10px 20px; background: #333; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="portofolio.html">Portofolio</a></li>
+                <li><a href="kontak.html">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Hubungi Saya</h1>
+        <p>Ada pertanyaan atau ingin bekerja sama? Isi form di bawah!</p>
+
+        <form action="#" method="POST">
+            <label for="nama">Nama Lengkap *</label>
+            <input type="text" id="nama" name="nama" required placeholder="Nama kamu">
+
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required placeholder="email@contoh.com">
+
+            <label for="subjek">Subjek</label>
+            <select id="subjek" name="subjek">
+                <option value="">-- Pilih Subjek --</option>
+                <option value="kerjasama">Kerja Sama</option>
+                <option value="tanya">Pertanyaan</option>
+                <option value="lainnya">Lainnya</option>
+            </select>
+
+            <label for="pesan">Pesan *</label>
+            <textarea id="pesan" name="pesan" rows="5" required placeholder="Tulis pesanmu di sini..."></textarea>
+
+            <button type="submit">Kirim Pesan</button>
+        </form>
+
+        <hr>
+
+        <h2>Atau hubungi langsung:</h2>
+        <ul>
+            <li>📧 <a href="mailto:budi@email.com">budi@email.com</a></li>
+            <li>📱 <a href="tel:+6281234567890">+62 812-3456-7890</a></li>
+            <li>📍 Yogyakarta, Indonesia</li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Budi</p>
+    </footer>
+
+</body>
+</html>

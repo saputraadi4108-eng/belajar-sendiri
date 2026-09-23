@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran | Pekan Kreativitas Sekolah</title>
+    <style>
+        :root {
+            --navy: #17324d;
+            --blue: #2878a8;
+            --sky: #eaf6fb;
+            --cream: #fffaf2;
+            --gold: #f0b44d;
+            --text: #263746;
+            --muted: #607181;
+            --white: #ffffff;
+            --line: #d8e6ec;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--sky), var(--cream));
+        }
+
+        .page {
+            width: min(920px, calc(100% - 32px));
+            margin: 32px auto;
+            background: var(--white);
+            border: 1px solid var(--line);
+            box-shadow: 0 14px 35px rgba(23, 50, 77, 0.12);
+        }
+
+        header {
+            padding: 36px 30px;
+            color: var(--white);
+            background: var(--navy);
+            border-bottom: 7px solid var(--gold);
+        }
+
+        header h1 { margin: 0 0 8px; font-size: clamp(2rem, 5vw, 3rem); }
+        header p { margin: 0; color: #e5f2f7; }
+
+        nav {
+            padding: 14px 30px;
+            background: #f6fbfd;
+            border-bottom: 1px solid var(--line);
+        }
+
+        a { color: var(--blue); font-weight: bold; }
+        main { padding: 30px; }
+        h2 { margin: 0 0 14px; color: var(--navy); }
+        .info, .registration { margin-bottom: 32px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+
+        th, td {
+            padding: 12px 14px;
+            text-align: left;
+            border: 1px solid var(--line);
+        }
+
+        th { width: 32%; color: var(--navy); background: var(--sky); }
+
+        form {
+            display: grid;
+            gap: 16px;
+            padding: 22px;
+            border: 1px solid var(--line);
+            background: #fcfefe;
+        }
+
+        .field { display: grid; gap: 6px; }
+        label, legend { font-weight: bold; color: var(--navy); }
+        input, select, textarea {
+            width: 100%;
+            padding: 11px 12px;
+            font: inherit;
+            color: var(--text);
+            border: 1px solid #b9cdd6;
+            border-radius: 4px;
+            background: var(--white);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: 3px solid rgba(40, 120, 168, 0.2);
+            border-color: var(--blue);
+        }
+
+        fieldset { padding: 12px 14px; border: 1px solid var(--line); }
+        .choice, .agreement { display: flex; align-items: center; gap: 8px; font-weight: normal; }
+        .choice + .choice { margin-top: 7px; }
+        .choice input, .agreement input { width: auto; }
+        textarea { min-height: 120px; resize: vertical; }
+
+        button {
+            padding: 12px 18px;
+            color: var(--white);
+            font: inherit;
+            font-weight: bold;
+            border: 0;
+            border-radius: 4px;
+            background: var(--blue);
+            cursor: pointer;
+        }
+
+        button:hover { background: var(--navy); }
+
+        footer {
+            padding: 22px;
+            text-align: center;
+            color: var(--muted);
+            background: #f6fbfd;
+        }
+
+        footer p { margin: 0; }
+
+        @media (max-width: 600px) {
+            .page { width: min(100% - 18px, 920px); margin: 9px auto; }
+            header, nav, main { padding-left: 20px; padding-right: 20px; }
+            th, td { padding: 10px; }
+            th { width: 40%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Pekan Kreativitas Sekolah 2026</h1>
+            <p>Daftarkan dirimu dan tunjukkan kreativitas terbaik dalam kegiatan sekolah tahun ini.</p>
+        </header>
+
+        <nav aria-label="Navigasi halaman">
+            <a href="profil.html">&larr; Kembali ke Profil</a>
+        </nav>
+
+        <main>
+            <section class="info">
+                <h2>Informasi Acara</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="row">Keterangan</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">Tanggal</th><td>20 Oktober 2026</td></tr>
+                        <tr><th scope="row">Waktu</th><td>08.00 - 15.00 WIB</td></tr>
+                        <tr><th scope="row">Lokasi</th><td>Aula dan Lapangan Sekolah</td></tr>
+                        <tr><th scope="row">Biaya</th><td>Rp25.000</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="registration">
+                <h2>Formulir Pendaftaran</h2>
+                <form action="#" method="post">
+                    <div class="field">
+                        <label for="nama">Nama lengkap</label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Alamat email</label>
+                        <input type="email" id="email" name="email" placeholder="nama@email.com" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="tanggal-lahir">Tanggal lahir</label>
+                        <input type="date" id="tanggal-lahir" name="tanggal-lahir" required>
+                    </div>
+
+                    <fieldset>
+                        <legend>Jenis kelamin</legend>
+                        <label class="choice" for="laki-laki">
+                            <input type="radio" id="laki-laki" name="jenis-kelamin" value="Laki-laki" required>
+                            Laki-laki
+                        </label>
+                        <label class="choice" for="perempuan">
+                            <input type="radio" id="perempuan" name="jenis-kelamin" value="Perempuan">
+                            Perempuan
+                        </label>
+                    </fieldset>
+
+                    <div class="field">
+                        <label for="kelas">Kelas</label>
+                        <select id="kelas" name="kelas" required>
+                            <option value="">-- Pilih kelas --</option>
+                            <option value="10">Kelas 10</option>
+                            <option value="11">Kelas 11</option>
+                            <option value="12">Kelas 12</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="alasan">Pesan/alasan mendaftar</label>
+                        <textarea id="alasan" name="alasan" placeholder="Tuliskan alasan kamu mengikuti acara ini" required></textarea>
+                    </div>
+
+                    <label class="agreement" for="persetujuan">
+                        <input type="checkbox" id="persetujuan" name="persetujuan" required>
+                        Saya menyetujui syarat dan ketentuan acara.
+                    </label>
+
+                    <button type="submit">Kirim Pendaftaran</button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Panitia Pekan Kreativitas Sekolah</p>
+        </footer>
+    </div>
+</body>
+</html>

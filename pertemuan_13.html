@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Study Tour 2026</title>
+
+    <style>
+        /* ---------- RESET DASAR ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ---------- BODY ---------- */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ---------- NAVIGASI ---------- */
+        nav {
+            background-color: #2c3e50;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #1abc9c;
+            text-decoration: underline;
+        }
+
+        /* ---------- HEADER ---------- */
+        header {
+            background-color: #1abc9c;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.05em;
+            opacity: 0.95;
+        }
+
+        /* ---------- SECTION ---------- */
+        section {
+            background-color: #ffffff;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #1abc9c;
+            padding-bottom: 8px;
+            margin-bottom: 18px;
+        }
+
+        /* ---------- TABEL ---------- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1abc9c;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e8f8f5;
+        }
+
+        /* ---------- FORMULIR ---------- */
+        form div {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #2c3e50;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1abc9c;
+            box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.2);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 6px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: inline-block;
+            font-weight: normal;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        /* ---------- TOMBOL ---------- */
+        button[type="submit"] {
+            background-color: #1abc9c;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.05em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #16a085;
+            transform: translateY(-2px);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="profil.html">&larr; Kembali ke Profil</a>
+    </nav>
+
+    <header>
+        <h1>Study Tour ke Museum Nasional 2026</h1>
+        <p>Ayo ikuti kegiatan study tour tahunan sekolah kita! Kesempatan seru untuk belajar sejarah secara langsung sambil bersenang-senang bersama teman sekelas.</p>
+    </header>
+
+    <section>
+        <h2>Informasi Acara</h2>
+        <table>
+            <tr>
+                <th>Detail</th>
+                <th>Keterangan</th>
+            </tr>
+            <tr>
+                <td>Tanggal</td>
+                <td>Sabtu, 15 November 2026</td>
+            </tr>
+            <tr>
+                <td>Waktu</td>
+                <td>07.00 - 16.00 WIB</td>
+            </tr>
+            <tr>
+                <td>Lokasi</td>
+                <td>Museum Nasional, Jakarta Pusat</td>
+            </tr>
+            <tr>
+                <td>Biaya</td>
+                <td>Rp 150.000 per siswa</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Formulir Pendaftaran</h2>
+        <form action="#" method="post">
+
+            <div>
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+            </div>
+
+            <div>
+                <label for="email">Alamat Email:</label>
+                <input type="email" id="email" name="email" placr="contoh@email.com" required>eholde
+            </div>
+
+            <div>
+                <label for="tanggal">Tanggal Lahir:</label>
+                <input type="date" id="tanggal" name="tanggal_lahir" required>
+            </div>
+
+            <div class="radio-group">
+                <label>Jenis Kelamin:</label>
+                <input type="radio" id="laki" name="jenis_kelamin" value="laki-laki" required>
+                <label for="laki">Laki-laki</label>
+
+                <input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan">
+                <label for="perempuan">Perempuan</label>
+            </div>
+
+            <div>
+                <label for="kelas">Kelas:</label>
+                <select id="kelas" name="kelas" required>
+                    <option value="">-- Pilih Kelas --</option>
+                    <option value="X-A">X-A</option>
+                    <option value="X-B">X-B</option>
+                    <option value="XI-A">XI-A</option>
+                    <option value="XI-B">XI-B</option>
+                    <option value="XII-A">XII-A</option>
+                    <option value="XII-B">XII-B</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="pesan">Alasan Mendaftar / Pesan:</label>
+                <textarea id="pesan" name="pesan" rows="5" placeholder="Tuliskan alasan kamu ingin mengikuti study tour ini..."></textarea>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="setuju" name="setuju" required>
+                <label for="setuju">Saya menyetujui syarat dan ketentuan yang berlaku.</label>
+            </div>
+
+            <button type="submit">Daftar Sekarang</button>
+
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Panitia Study Tour Sekolah. Semua hak dilindungi.</p>
+    </footer>
+
+</body>
+</html>

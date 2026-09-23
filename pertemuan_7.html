@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Saya</title>
+</head>
+<body>
+
+    <!-- HEADER: Bagian atas halaman (logo, judul situs) -->
+    <header>
+        <h1>Blog Teknologi Saya</h1>
+        <p>Belajar coding dengan mudah</p>
+    </header>
+
+    <!-- NAV: Navigasi/menu -->
+    <nav>
+        <ul>
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/artikel">Artikel</a></li>
+            <li><a href="/tentang">Tentang</a></li>
+            <li><a href="/kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN: Konten utama halaman -->
+    <main>
+
+        <!-- ARTICLE: Konten independen (bisa berdiri sendiri) -->
+        <article>
+            <header>
+                <h2>Cara Belajar HTML dalam 7 Hari</h2>
+                <p>Ditulis oleh <strong>Siti</strong> pada 
+                <time datetime="2026-09-14">14 September 2026</time></p>
+            </header>
+
+            <!-- SECTION: Bagian/kelompok konten dalam artikel -->
+            <section>
+                <h3>Hari 1: Dasar-dasar</h3>
+                <p>Pelajari struktur dasar HTML dan tag teks...</p>
+            </section>
+
+            <section>
+                <h3>Hari 2: Link dan Gambar</h3>
+                <p>Pelajari cara menghubungkan halaman...</p>
+            </section>
+
+            <footer>
+                <p>Tag: <a href="#">HTML</a>, <a href="#">Pemula</a></p>
+            </footer>
+        </article>
+
+        <!-- ASIDE: Konten sampingan (sidebar) -->
+        <aside>
+            <h3>Artikel Populer</h3>
+            <ul>
+                <li><a href="#">Belajar CSS</a></li>
+                <li><a href="#">JavaScript Dasar</a></li>
+            </ul>
+        </aside>
+
+    </main>
+
+    <!-- FOOTER: Bagian bawah halaman -->
+    <footer>
+        <p>&copy; 2026 Blog Teknologi Saya. All rights reserved.</p>
+    </footer>
+      
+    <details>
+    <summary>Klik untuk melihat jawaban</summary>
+    <p>HTML adalah HyperText Markup Language!</p>
+</details>
+
+<figure>
+    <img src="pemandangan.jpg" alt="Gunung Bromo saat sunrise">
+    <figcaption>Gambar 1: Pemandangan Gunung Bromo, Jawa Timur</figcaption>
+</figure>
+
+<!-- AUDIO -->
+<audio controls>
+    <source src="lagu.mp3" type="audio/mpeg">
+    <source src="lagu.ogg" type="audio/ogg">
+    Browsermu tidak mendukung tag audio.
+</audio>
+
+<!-- VIDEO -->
+<video controls width="640" height="360" poster="thumbnail.jpg">
+    <source src="video.mp4" type="video/mp4">
+    <source src="video.webm" type="video/webm">
+    Browsermu tidak mendukung tag video.
+</video>
+
+<iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/VIDEO_ID" 
+    title="Video YouTube"
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+
+<!-- DIV: Pengelompokan besar -->
+<div class="kartu-produk">
+    <h3>Sepatu Nike</h3>
+    <p>Rp 1.500.000</p>
+    <button>Beli</button>
+</div>
+
+<!-- SPAN: Pengelompokan kecil dalam teks -->
+<p>Harga: <span class="harga-dicoret">Rp 2.000.000</span> 
+   <span class="harga-diskon">Rp 1.500.000</span></p>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulir Pendaftaran</title>
+</head>
+<body>
+
+    <h1>Formulir Pendaftaran</h1>
+
+    <form action="/daftar" method="POST">
+
+        <!-- TEXT INPUT -->
+        <label for="nama">Nama Lengkap:</label><br>
+        <input type="text" id="nama" name="nama" 
+               placeholder="Masukkan nama lengkap" required>
+        <br><br>
+
+        <!-- EMAIL -->
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" 
+               placeholder="contoh@email.com" required>
+        <br><br>
+
+        <!-- PASSWORD -->
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" 
+               minlength="8" required>
+        <br><br>
+
+        <!-- NUMBER -->
+        <label for="umur">Umur:</label><br>
+        <input type="number" id="umur" name="umur" 
+               min="17" max="100">
+        <br><br>
+
+        <!-- DATE -->
+        <label for="tgl-lahir">Tanggal Lahir:</label><br>
+        <input type="date" id="tgl-lahir" name="tgl_lahir">
+        <br><br>
+
+        <!-- RADIO BUTTON (Pilih satu) -->
+        <p>Jenis Kelamin:</p>
+        <input type="radio" id="laki" name="gender" value="laki-laki">
+        <label for="laki">Laki-laki</label><br>
+        <input type="radio" id="perempuan" name="gender" value="perempuan">
+        <label for="perempuan">Perempuan</label>
+        <br><br>
+
+        <!-- CHECKBOX (Pilih banyak) -->
+        <p>Hobi:</p>
+        <input type="checkbox" id="baca" name="hobi" value="membaca">
+        <label for="baca">Membaca</label><br>
+        <input type="checkbox" id="game" name="hobi" value="gaming">
+        <label for="game">Gaming</label><br>
+        <input type="checkbox" id="masak" name="hobi" value="memasak">
+        <label for="masak">Memasak</label>
+        <br><br>
+
+        <!-- DROPDOWN / SELECT -->
+        <label for="kota">Kota:</label><br>
+        <select id="kota" name="kota">
+            <option value="">-- Pilih Kota --</option>
+            <option value="jakarta">Jakarta</option>
+            <option value="bandung">Bandung</option>
+            <option value="surabaya">Surabaya</option>
+            <option value="yogyakarta">Yogyakarta</option>
+        </select>
+        <br><br>
+
+        <!-- TEXTAREA (Teks panjang) -->
+        <label for="bio">Bio Singkat:</label><br>
+        <textarea id="bio" name="bio" rows="5" cols="40" 
+                  placeholder="Ceritakan tentang dirimu..."></textarea>
+        <br><br>
+
+        <!-- FILE UPLOAD -->
+        <label for="foto">Upload Foto:</label><br>
+        <input type="file" id="foto" name="foto" accept="image/*">
+        <br><br>
+
+        <!-- RANGE (Slider) -->
+        <label for="kepuasan">Tingkat Kepuasan (1-10):</label><br>
+        <input type="range" id="kepuasan" name="kepuasan" min="1" max="10">
+        <br><br>
+
+        <!-- COLOR PICKER -->
+        <label for="warna">Warna Favorit:</label><br>
+        <input type="color" id="warna" name="warna">
+        <br><br>
+
+        <!-- TOMBOL -->
+        <button type="submit">Daftar Sekarang</button>
+        <button type="reset">Reset Form</button>
+
+    </form>
+
+    <!-- Cara yang BENAR: hubungkan dengan for dan id -->
+<label for="email">Email:</label>
+<input type="email" id="email" name="email">
+<!-- Klik label "Email:" akan otomatis fokus ke inputnya! -->
+
+<div id="header">...</div>
+<div class="nav">...</div>
+<div id="content">...</div>
+<div id="footer">...</div>
+
+<header>...</header>
+<nav>...</nav>
+<main>...</main>
+<footer>...</footer>
+
+</body>
+</html>

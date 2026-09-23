@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    kartu-produk {
+    width: 300px;           /* Lebar kotak */
+    background-color: white;
+    
+    /* PADDING (Jarak dalam) */
+    padding: 20px; 
+    
+    /* BORDER (Garis tepi) */
+    border: 1px solid black; 
+    border-radius: 10px;   /* Membuat sudut melengkung */
+    
+    /* MARGIN (Jarak luar) */
+    margin: 20px auto;     /* auto membuat kotak berada di tengah halaman */
+    
+    /* Shadow (Bayangan) */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Item menyebar ke ujung */
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+/* GALLERY (Grid Sederhana) */
+.container-galeri {
+    display: flex;
+    flex-wrap: wrap; /* Jika tidak muat, turun ke bawah */
+    gap: 10px; /* Jarak antar item */
+}
+
+.item-galeri {
+    flex: 1; /* Membagi rata ruang yang ada */
+    background: #ddd;
+    height: 100px;
+}
+
+/* Tampilan Default (Desktop) */
+.kolom-konten {
+    display: flex;
+}
+.sidebar { width: 30%; }
+.main-content { width: 70%; }
+
+/* Tampilan HP (Layar < 768px) */
+@media (max-width: 768px) {
+    .kolom-konten {
+        flex-direction: column; /* Ubah jadi bertumpuk ke bawah */
+    }
+    .sidebar, .main-content {
+        width: 100%; /* Lebar penuh */
+    }
+}
+</style>
+<body>
+    
+</body>
+</html>

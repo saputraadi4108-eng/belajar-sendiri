@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Diri | Kenalan Yuk!</title>
+    <style>
+        :root {
+            --navy: #17324d;
+            --blue: #2878a8;
+            --sky: #eaf6fb;
+            --cream: #fffaf2;
+            --gold: #f0b44d;
+            --text: #263746;
+            --muted: #607181;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: linear-gradient(135deg, var(--sky), var(--cream));
+        }
+
+        .page {
+            width: min(920px, calc(100% - 32px));
+            margin: 32px auto;
+            background: var(--white);
+            border: 1px solid #d8e6ec;
+            box-shadow: 0 14px 35px rgba(23, 50, 77, 0.12);
+        }
+
+        header {
+            padding: 42px 24px 34px;
+            text-align: center;
+            color: var(--white);
+            background: var(--navy);
+            border-bottom: 7px solid var(--gold);
+        }
+
+        header h1 {
+            margin: 0 0 18px;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            letter-spacing: 1px;
+        }
+
+        header img {
+            width: 155px;
+            height: 155px;
+            object-fit: cover;
+            border: 6px solid var(--white);
+            border-radius: 50%;
+        }
+
+        nav {
+            padding: 14px 24px;
+            text-align: right;
+            background: #f6fbfd;
+            border-bottom: 1px solid #d8e6ec;
+        }
+
+        a {
+            color: var(--blue);
+            font-weight: bold;
+        }
+
+        main { padding: 10px 32px 24px; }
+
+        section {
+            padding: 22px 0;
+            border-bottom: 1px solid #d8e6ec;
+        }
+
+        section h2 {
+            margin: 0 0 12px;
+            color: var(--navy);
+            font-size: 1.6rem;
+        }
+
+        section p { margin: 8px 0; }
+
+        ul, ol { padding-left: 26px; }
+        li { margin: 6px 0; }
+
+        footer {
+            padding: 22px;
+            text-align: center;
+            color: var(--muted);
+            background: #f6fbfd;
+        }
+
+        @media (max-width: 600px) {
+            .page { width: min(100% - 18px, 920px); margin: 9px auto; }
+            main { padding: 8px 20px 20px; }
+            nav { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Muhammad Adi Saputra</h1>
+            <img src="WhatsApp Image 2026-09-20 at 11.22.32.jpeg" alt="Foto profil Muhammad Adi Saputra">
+        </header>
+
+        <nav aria-label="Navigasi halaman">
+            <a href="pendaftaran.html">Formulir Pendaftaran Acara</a>
+        </nav>
+
+        <main>
+            <section>
+                <h2>Tentang Saya</h2>
+                <p>Halo! Saya adalah siswa yang memiliki ketertarikan besar pada teknologi dan pengembangan perangkat lunak. Saya sedang belajar <strong>pemrograman web</strong> agar dapat membuat karya digital yang bermanfaat.</p>
+                <p>Saya senang mencoba hal-hal baru, melatih logika berpikir, dan mengembangkan kemampuan secara bertahap. Bagi saya, konsistensi adalah kunci untuk meraih tujuan dan masa depan yang <em>cerah</em>.</p>
+            </section>
+
+            <section>
+                <h2>Hobi Saya</h2>
+                <ul>
+                    <li>Bermain sepak bola</li>
+                    <li>Belajar pemrograman web</li>
+                    <li>Membaca buku teknologi</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Prestasi/Pengalaman</h2>
+                <ol>
+                    <li>Mengikuti lomba cerdas cermat di sekolah</li>
+                    <li>Menyelesaikan latihan dasar HTML dan CSS</li>
+                    <li>Berpartisipasi dalam kegiatan seni sekolah</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Kontak</h2>
+                <p>Email: <a href="mailto:adi@example.com">adi@example.com</a></p>
+                <p>Media sosial: <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Muhammad Adi Saputra</p>
+        </footer>
+    </div>
+</body>
+</html>
