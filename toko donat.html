@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donat Manis - Toko Donat Premium</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fredoka+One&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF5F5;
+        }
+        
+        .font-display {
+            font-family: 'Fredoka One', cursive;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFB7B2; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF9E99; 
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .donut-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .donut-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 183, 178, 0.4);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #FECFEF 0%, #FF9A9E 100%);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+        }
+
+        /* Loader */
+        .loader {
+            border-top-color: #FF9A9E;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+        }
+        
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Modal Transition */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 300ms, transform 300ms;
+        }
+        .modal-exit {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .modal-exit-active {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 300ms, transform 300ms;
+        }
+    </style>
+</head>
+<body class="text-gray-800 overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="fa-solid fa-cookie-bite text-3xl text-pink-500"></i>
+                    <span class="font-display text-2xl text-gray-800 tracking-wide">Donat<span class="text-pink-500">Manis</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-pink-500 font-medium transition">Beranda</a>
+                    <a href="#menu" class="text-gray-600 hover:text-pink-500 font-medium transition">Menu</a>
+                    <a href="#about" class="text-gray-600 hover:text-pink-500 font-medium transition">Tentang</a>
+                    <a href="#contact" class="text-gray-600 hover:text-pink-500 font-medium transition">Kontak</a>
+                </div>
+
+                <!-- Cart & Mobile Menu Button -->
+                <div class="flex items-center gap-4">
+                    <button onclick="toggleCart()" class="relative p-2 text-gray-600 hover:text-pink-500 transition group">
+                        <i class="fa-solid fa-cart-shopping text-xl group-hover:scale-110 transition-transform"></i>
+                        <span id="cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-pink-500 rounded-full opacity-0 transition-opacity duration-300">0</span>
+                    </button>
+                    
+                    <button class="md:hidden p-2 text-gray-600" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50">Beranda</a>
+                <a href="#menu" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50">Menu</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50">Tentang</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-pink-500 hover:bg-pink-50">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 animate-fade-in-up">
+                <span class="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-600 font-semibold text-sm mb-2">✨ Rasa Baru Setiap Hari</span>
+                <h1 class="font-display text-5xl md:text-7xl text-gray-900 leading-tight">
+                    Manisnya <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Bahagia</span> dalam Setiap Gigitan
+                </h1>
+                <p class="text-lg text-gray-600 max-w-lg">
+                    Dibuat dengan bahan premium, cinta, dan resep rahasia turun temurun. Nikmati donat lembut yang meleleh di mulut Anda.
+                </p>
+                <div class="flex gap-4 pt-4">
+                    <a href="#menu" class="btn-primary px-8 py-4 rounded-full text-white font-bold shadow-lg flex items-center gap-2">
+                        Pesan Sekarang <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <button onclick="scrollToAbout()" class="px-8 py-4 rounded-full border-2 border-pink-200 text-pink-500 font-bold hover:bg-pink-50 transition">
+                        Lihat Cerita Kami
+                    </button>
+                </div>
+                
+                <div class="flex items-center gap-4 pt-6">
+                    <div class="flex -space-x-4">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=1" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=5" alt="User">
+                        <img class="w-10 h-10 rounded-full border-2 border-white" src="https://i.pravatar.cc/100?img=8" alt="User">
+                    </div>
+                    <div class="text-sm">
+                        <p class="font-bold text-gray-900">10k+ Pelanggan Happy</p>
+                        <div class="flex text-yellow-400 text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative flex justify-center">
+                <!-- Decorative Blobs -->
+                <div class="absolute top-0 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                <div class="absolute top-0 left-10 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                <div class="absolute -bottom-8 left-20 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+                
+                <!-- Main Image -->
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Delicious Donuts" 
+                     class="relative z-10 w-full max-w-md drop-shadow-2xl rounded-3xl float-anim object-cover aspect-square">
+                
+                <!-- Floating Badge -->
+                <div class="absolute bottom-10 left-0 bg-white p-4 rounded-2xl shadow-xl z-20 animate-bounce" style="animation-duration: 3s;">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-green-100 p-2 rounded-full text-green-600">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Status</p>
+                            <p class="font-bold text-gray-800">Fresh from Oven</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-10 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 rounded-2xl bg-pink-50 hover:bg-pink-100 transition duration-300">
+                    <i class="fa-solid fa-wheat-awn text-4xl text-pink-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Bahan Premium</h3>
+                    <p class="text-gray-600 text-sm">Menggunakan tepung impor pilihan dan butter asli berkualitas tinggi.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-purple-50 hover:bg-purple-100 transition duration-300">
+                    <i class="fa-solid fa-fire-burner text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Selalu Fresh</h3>
+                    <p class="text-gray-600 text-sm">Dibuat fresh setiap pagi. Tidak ada donat sisa dari hari kemarin.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-yellow-50 hover:bg-yellow-100 transition duration-300">
+                    <i class="fa-solid fa-truck-fast text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="font-bold text-xl mb-2">Pengiriman Cepat</h3>
+                    <p class="text-gray-600 text-sm">Garansi sampai dalam kondisi utuh dan tetap lezat dalam 30 menit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-[#FFF5F5]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl text-gray-900 mb-4">Menu Favorit Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Pilih dari berbagai varian rasa unik yang kami racik khusus untuk memanjakan lidah Anda.</p>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-3 mt-8" id="category-filters">
+                    <button onclick="filterProducts('all')" class="filter-btn active px-6 py-2 rounded-full border border-pink-200 bg-pink-500 text-white font-medium transition hover:shadow-md">Semua</button>
+                    <button onclick="filterProducts('classic')" class="filter-btn px-6 py-2 rounded-full border border-pink-200 bg-white text-gray-600 font-medium transition hover:bg-pink-50 hover:text-pink-500">Classic</button>
+                    <button onclick="filterProducts('premium')" class="filter-btn px-6 py-2 rounded-full border border-pink-200 bg-white text-gray-600 font-medium transition hover:bg-pink-50 hover:text-pink-500">Premium</button>
+                    <button onclick="filterProducts('filled')" class="filter-btn px-6 py-2 rounded-full border border-pink-200 bg-white text-gray-600 font-medium transition hover:bg-pink-50 hover:text-pink-500">Isian Spesial</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Products will be injected here by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="py-12 px-4">
+        <div class="max-w-7xl mx-auto bg-gradient-to-r from-pink-500 to-purple-600 rounded-3xl overflow-hidden shadow-2xl relative">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center p-8 md:p-12 relative z-10">
+                <div class="text-white space-y-4">
+                    <span class="bg-white/20 px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">Promo Terbatas!</span>
+                    <h2 class="font-display text-4xl md:text-5xl">Beli 6 Gratis 1</h2>
+                    <p class="text-pink-100 text-lg">Nikmati kelezatan bersama teman-teman. Berlaku setiap hari Jumat.</p>
+                    <button onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})" class="mt-4 bg-white text-pink-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">
+                        Ambil Promo
+                    </button>
+                </div>
+                <div class="hidden md:flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Promo Donut" class="rounded-2xl shadow-lg transform rotate-6 hover:rotate-0 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1516550893923-42d28e5677af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chef making donuts" class="rounded-3xl shadow-2xl w-full object-cover h-[500px]">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden md:block">
+                        <p class="font-display text-2xl text-pink-500 mb-1">10+</p>
+                        <p class="text-gray-600 text-sm">Tahun pengalaman membuat kebahagiaan melalui donat.</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <h2 class="font-display text-4xl text-gray-900">Cerita di Balik Donat Manis</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Bermula dari dapur kecil rumah nenek pada tahun 2014, Donat Manis kini telah berkembang menjadi destinasi favorit pecinta kue manis. Kami percaya bahwa donat bukan sekadar makanan, tapi media untuk berbagi kebahagiaan.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Setiap donat yang kami buat melalui proses fermentasi alami selama 24 jam untuk menghasilkan tekstur yang super lembut dan ringan. Tanpa pengawet, tanpa kompromi.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 pt-4">
+                        <div>
+                            <h4 class="font-bold text-2xl text-gray-900">50k+</h4>
+                            <p class="text-gray-500 text-sm">Donat Terjual/Bulan</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-2xl text-gray-900">4.9/5</h4>
+                            <p class="text-gray-500 text-sm">Rating Kepuasan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i class="fa-solid fa-cookie-bite text-2xl text-pink-500"></i>
+                        <span class="font-display text-xl">DonatManis</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Menghadirkan kelezatan autentik dengan sentuhan modern. Kunjungi outlet kami atau pesan online.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-500 transition"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#home" class="hover:text-pink-500 transition">Beranda</a></li>
+                        <li><a href="#menu" class="hover:text-pink-500 transition">Menu Lengkap</a></li>
+                        <li><a href="#about" class="hover:text-pink-500 transition">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-pink-500 transition">Karir</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Kontak</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-pink-500"></i>
+                            <span>Jl. Mawar No. 123, Jakarta Selatan, Indonesia</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-pink-500"></i>
+                            <span>+62 812 3456 7890</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-pink-500"></i>
+                            <span>hello@donatmanis.id</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-6">Jam Operasional</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex justify-between">
+                            <span>Senin - Jumat</span>
+                            <span class="text-white">08:00 - 21:00</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sabtu - Minggu</span>
+                            <span class="text-white">09:00 - 22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2026 Donat Manis. All rights reserved. Created with ❤️ for Sweet Lovers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar (Modal) -->
+    <div id="cart-modal" class="fixed inset-0 z-[60] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        
+        <!-- Sidebar -->
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl transform transition-transform duration-300 translate-x-full flex flex-col" id="cart-sidebar">
+            <!-- Header -->
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-pink-50">
+                <h2 class="font-display text-2xl text-gray-800">Keranjang Belanja</h2>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-red-500 transition">
+                    <i class="fa-solid fa-xmark text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Cart Items Area -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-6" id="cart-items-container">
+                <!-- Empty State -->
+                <div id="empty-cart-msg" class="flex flex-col items-center justify-center h-full text-gray-400 space-y-4">
+                    <i class="fa-solid fa-basket-shopping text-6xl opacity-20"></i>
+                    <p>Keranjang kamu masih kosong nih :(</p>
+                    <button onclick="toggleCart(); document.getElementById('menu').scrollIntoView({behavior: 'smooth'})" class="text-pink-500 font-medium hover:underline">Mulai Belanja</button>
+                </div>
+                <!-- Items will be injected here -->
+            </div>
+            
+            <!-- Footer / Checkout -->
+            <div class="p-6 border-t border-gray-100 bg-gray-50">
+                <div class="flex justify-between mb-4 text-gray-600">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">Rp 0</span>
+                </div>
+                <div class="flex justify-between mb-6 text-xl font-bold text-gray-900">
+                    <span>Total</span>
+                    <span id="cart-total">Rp 0</span>
+                </div>
+                <button onclick="checkout()" class="w-full btn-primary py-4 rounded-xl text-white font-bold shadow-lg hover:shadow-xl transition flex justify-center items-center gap-2">
+                    Checkout Sekarang <i class="fa-solid fa-credit-card"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-gray-900 text-white px-6 py-4 rounded-lg shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 z-[70] flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-green-400 text-xl"></i>
+        <div>
+            <h4 class="font-bold text-sm">Berhasil!</h4>
+            <p class="text-xs text-gray-300" id="toast-message">Item ditambahkan ke keranjang</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Data Produk ---
+        const products = [
+            {
+                id: 1,
+                name: "Glazed Original",
+                category: "classic",
+                price: 15000,
+                image: "https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                desc: "Donat klasik dengan lapisan gula glasir tipis yang manis dan lembut."
+            },
+            {
+                id: 2,
+                name: "Choco Sprinkle",
+                category: "classic",
+                price: 18000,
+                image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                desc: "Coklat susu premium dengan taburan sprinkles warna-warni ceria."
+            },
+            {
+                id: 3,
+                name: "Strawberry Dream",
+                category: "premium",
+                price: 22000,
+                image: "https://images.unsplash.com/photo-1623246123318-39d9a28808b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                desc: "Frosting stroberi asli dengan potongan buah stroberi segar di atasnya."
+            },
+            {
+                id: 4,
+                name: "Matcha Latte",
+                category: "premium",
+                price: 25000,
+                image: "https://images.unsplash.com/photo-1612240498936-65f5101365d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                desc: "Perpaduan matcha Jepang grade A dengan white chocolate yang elegan."
+            },
+            {
+                id: 5,
+                name: "Blueberry Bomb",
+                category: "filled",
+                price: 20000,
+                image: "https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                desc: "Donat isi krim blueberry yang meledak di mulut saat digigit."
+            },
+            {
+                id: 6,
+                name: "Caramel Macchiato",
+                category: "premium",
+                price: 24000,
+                image: "https://images.unsplash.com/photo-1551106652-a5bcf4b2d8b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                desc: "Rasa kopi karamel yang kuat dengan drizzle saus karamel asin."
+            },
+            {
+                id: 7,
+                name: "Red Velvet",
+                category: "filled",
+                price: 23000,
+                image: "https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", // Placeholder reuse for demo consistency if specific img not found, but ideally unique
+                desc: "Adonan merah velvet lembut dengan isian cream cheese frosting."
+            },
+            {
+                id: 8,
+                name: "Tiramisu Delight",
+                category: "premium",
+                price: 26000,
+                image: "https://images.unsplash.com/photo-1623246123318-39d9a28808b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80", // Placeholder
+                desc: "Taburan bubuk kakao dan mascarpone cream ala Italia."
+            }
+        ];
+
+        // --- State Management ---
+        let cart = [];
+        let currentFilter = 'all';
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    nav.classList.add('shadow-md');
+                    nav.classList.replace('bg-white/90', 'bg-white/95');
+                } else {
+                    nav.classList.remove('shadow-md');
+                    nav.classList.replace('bg-white/95', 'bg-white/90');
+                }
+            });
+        });
+
+        // --- Functions ---
+
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(number);
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentFilter);
+
+            filtered.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'donut-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 flex flex-col h-full';
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden group">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <button onclick="addToCart(${product.id})" class="absolute bottom-3 right-3 bg-white text-pink-500 w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-pink-500 hover:text-white transition transform hover:scale-110">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-gray-800">${product.name}</h3>
+                            <span class="bg-pink-100 text-pink-600 text-xs px-2 py-1 rounded-md font-semibold">${product.category.toUpperCase()}</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2 flex-1">${product.desc}</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="font-bold text-xl text-gray-900">${formatRupiah(product.price)}</span>
+                            <button onclick="addToCart(${product.id})" class="text-sm font-medium text-pink-500 hover:text-pink-700 underline decoration-2 underline-offset-4">Tambah</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            
+            // Update button styles
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(category)) {
+                    btn.classList.remove('bg-white', 'text-gray-600');
+                    btn.classList.add('bg-pink-500', 'text-white');
+                } else {
+                    btn.classList.add('bg-white', 'text-gray-600');
+                    btn.classList.remove('bg-pink-500', 'text-white');
+                }
+            });
+
+            // Animation reset
+            const grid = document.getElementById('product-grid');
+            grid.style.opacity = '0';
+            setTimeout(() => {
+                renderProducts();
+                grid.style.opacity = '1';
+                grid.style.transition = 'opacity 0.3s ease';
+            }, 200);
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`"${product.name}" ditambahkan ke keranjang`);
+            
+            // Animate cart icon
+            const badge = document.getElementById('cart-badge');
+            badge.classList.add('scale-125');
+            setTimeout(() => badge.classList.remove('scale-125'), 200);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateQty(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            const badge = document.getElementById('cart-badge');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+
+            // Update Badge
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.innerText = totalQty;
+            badge.style.opacity = totalQty > 0 ? '1' : '0';
+
+            // Calculate Totals
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            subtotalEl.innerText = formatRupiah(total);
+            totalEl.innerText = formatRupiah(total);
+
+            // Render Items
+            if (cart.length === 0) {
+                container.innerHTML = '';
+                container.appendChild(emptyMsg);
+                emptyMsg.style.display = 'flex';
+            } else {
+                emptyMsg.style.display = 'none';
+                container.innerHTML = '';
+                
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'flex gap-4 bg-white p-3 rounded-xl border border-gray-100 shadow-sm';
+                    itemEl.innerHTML = `
+                        <img src="${item.image}" class="w-20 h-20 rounded-lg object-cover">
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm">${item.name}</h4>
+                                <p class="text-pink-500 font-semibold text-sm">${formatRupiah(item.price)}</p>
+                            </div>
+                            <div class="flex justify-between items-end">
+                                <div class="flex items-center gap-3 bg-gray-100 rounded-lg px-2 py-1">
+                                    <button onclick="updateQty(${item.id}, -1)" class="text-gray-500 hover:text-pink-500 w-5 h-5 flex items-center justify-center"><i class="fa-solid fa-minus text-xs"></i></button>
+                                    <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
+                                    <button onclick="updateQty(${item.id}, 1)" class="text-gray-500 hover:text-pink-500 w-5 h-5 flex items-center justify-center"><i class="fa-solid fa-plus text-xs"></i></button>
+                                </div>
+                                <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 text-xs underline">Hapus</button>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(itemEl);
+                });
+            }
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            const sidebar = document.getElementById('cart-sidebar');
+            
+            if (modal.classList.contains('hidden')) {
+                // Open
+                modal.classList.remove('hidden');
+                // Small delay to allow display:block to apply before transform
+                setTimeout(() => {
+                    sidebar.classList.remove('translate-x-full');
+                }, 10);
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                // Close
+                sidebar.classList.add('translate-x-full');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function scrollToAbout() {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            
+            msgEl.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                showToast("Keranjang masih kosong!");
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const confirmMsg = `Total pembayaran: ${formatRupiah(total)}\n\nLanjutkan ke pembayaran?`;
+            
+            if (confirm(confirmMsg)) {
+                // Simulate processing
+                const btn = document.querySelector('#cart-sidebar button[onclick="checkout()"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<div class="loader w-5 h-5 rounded-full border-2 border-white border-t-transparent"></div> Processing...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    alert("Terima kasih! Pesanan Anda sedang diproses. 🍩");
+                    cart = [];
+                    updateCartUI();
+                    toggleCart();
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>
