@@ -1,18 +1,370 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portofolio Pribadi | Nama Anda</title>
+
+    <!-- Tailwind CSS (Framework Desain) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome (Ikon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Konfigurasi Tema & Custom Styles -->
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            /* Biru Modern */
+            --bg-light: #ffffff;
+            --bg-dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f1f5f9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Animasi Fade In */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Effect untuk Navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hover Card Effect */
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
-<body>
-   <!-- Gambar dasar -->
-<img src="foto-saya.jpg" alt="Foto profil Budi">
 
-<!-- Gambar dari internet -->
-<img src="https://picsum.photos/400/300" alt="Gambar random">
+<body class="bg-gray-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
 
-<!-- Gambar dengan ukuran -->
-<img src="logo.png" alt="Logo" width="200" height="100"> 
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- LOGO -->
+                <div class="flex-shrink-0 cursor-pointer">
+                    <!-- GANTI: Logo atau Nama Brand -->
+                    <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">Dev<span
+                            class="text-slate-800 dark:text-white">Folio.</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Beranda</a>
+                    <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Tentang</a>
+                    <a href="#portfolio" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Portofolio</a>
+                    <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Kontak</a>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700 transition">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-800 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-2 text-center">
+                <a href="#home" class="block py-2 hover:text-blue-600">Beranda</a>
+                <a href="#about" class="block py-2 hover:text-blue-600">Tentang</a>
+                <a href="#portfolio" class="block py-2 hover:text-blue-600">Portofolio</a>
+                <a href="#contact" class="block py-2 hover:text-blue-600">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1 reveal">
+                <p class="text-blue-600 dark:text-blue-400 font-semibold mb-2">Halo, Saya</p>
+                <!-- GANTI: Nama Anda -->
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">Alex Pratama</h1>
+                <!-- GANTI: Profesi Anda -->
+                <h2 class="text-2xl md:text-3xl text-gray-500 dark:text-gray-400 mb-6">Frontend Developer & UI Designer
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-8 max-w-lg leading-relaxed">
+                    Saya membangun website yang cepat, responsif, dan mudah digunakan. Mari wujudkan ide digital Anda
+                    menjadi kenyataan.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#contact"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition shadow-lg shadow-blue-500/30">Hubungi
+                        Saya</a>
+                    <a href="#portfolio"
+                        class="border border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-400 px-8 py-3 rounded-full font-medium transition">Lihat
+                        Karya</a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="mt-8 flex space-x-6 text-2xl text-gray-500">
+                    <!-- GANTI: Link Sosmed -->
+                    <a href="#" class="hover:text-blue-600 transition"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-blue-600 transition"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-blue-600 transition"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="order-1 md:order-2 flex justify-center reveal delay-200">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-blue-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                    <!-- GANTI: Foto Profil Anda (src="URL_FOTO") -->
+
+                    <img src="Whatsapp Image 2024-06-05 at 12.30.47.jpeg" alt="Foto Profil"
+                        class="w-full h-full object-cover">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 bg-white dark:bg-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Tentang Saya</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <!-- GANTI: Gambar Ilustrasi atau Foto Kedua -->
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Workspace" class="rounded-xl shadow-lg w-full object-cover h-80">
+                </div>
+                <div class="reveal delay-200">
+                    <h3 class="text-2xl font-semibold mb-4">Mendesain Solusi dengan Kode</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                        Saya adalah seorang pengembang web yang berfokus pada pengalaman pengguna. Dengan pengalaman
+                        lebih dari 3 tahun, saya telah membantu berbagai klien membangun kehadiran online mereka. Saya
+                        percaya bahwa desain yang baik bukan hanya tentang tampilan, tapi juga tentang fungsi.
+                    </p>
+
+                    <!-- Skills -->
+                    <div class="mb-6">
+                        <h4 class="font-bold mb-3">Keahlian Teknis:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <!-- GANTI: Skill sesuai kemampuan -->
+                            <span
+                                class="px-4 py-2 bg-gray-100 dark:bg-slate-700 rounded-lg text-sm font-medium">HTML5</span>
+                            <span class="px-4 py-2 bg-gray-100 dark:bg-slate-700 rounded-lg text-sm font-medium">CSS3 /
+                                Tailwind</span>
+                            <span
+                                class="px-4 py-2 bg-gray-100 dark:bg-slate-700 rounded-lg text-sm font-medium">JavaScript
+                                (ES6+)</span>
+                            <span class="px-4 py-2 bg-gray-100 dark:bg-slate-700 rounded-lg text-sm font-medium">React
+                                JS</span>
+                            <span
+                                class="px-4 py-2 bg-gray-100 dark:bg-slate-700 rounded-lg text-sm font-medium">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Portofolio Terbaru</h2>
+                <p class="text-gray-500 dark:text-gray-400">Beberapa proyek pilihan yang telah saya kerjakan</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md project-card transition-all duration-300 reveal">
+                    <!-- GANTI: Gambar Proyek 1 -->
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Project 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-Commerce Dashboard</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Dashboard admin untuk manajemen toko
+                            online dengan analitik real-time.</p>
+                        <div class="flex justify-between items-center">
+                            <span
+                                class="text-xs font-semibold text-blue-600 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">React
+                                JS</span>
+                            <a href="#" class="text-sm font-medium hover:text-blue-600 flex items-center gap-1">Lihat
+                                Detail <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md project-card transition-all duration-300 reveal delay-100">
+                    <!-- GANTI: Gambar Proyek 2 -->
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Project 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Finance App Landing Page</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Landing page modern untuk aplikasi
+                            keuangan dengan animasi smooth.</p>
+                        <div class="flex justify-between items-center">
+                            <span
+                                class="text-xs font-semibold text-blue-600 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">Tailwind</span>
+                            <a href="#" class="text-sm font-medium hover:text-blue-600 flex items-center gap-1">Lihat
+                                Detail <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md project-card transition-all duration-300 reveal delay-200">
+                    <!-- GANTI: Gambar Proyek 3 -->
+                    <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                        alt="Project 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Travel Blog Template</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Template blog minimalis yang
+                            dioptimalkan untuk SEO dan kecepatan.</p>
+                        <div class="flex justify-between items-center">
+                            <span
+                                class="text-xs font-semibold text-blue-600 bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">HTML/CSS</span>
+                            <a href="#" class="text-sm font-medium hover:text-blue-600 flex items-center gap-1">Lihat
+                                Detail <i class="fas fa-arrow-right text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-gray-100 dark:bg-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center reveal">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Mari Bekerja Sama</h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-10">Tertarik untuk membuat proyek hebat bersama? Kirimkan
+                pesan kepada saya.</p>
+
+            <form class="space-y-4 text-left bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Nama</label>
+                        <input type="text"
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-blue-500 outline-none"
+                            placeholder="Nama Anda">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Email</label>
+                        <input type="email"
+                            class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-blue-500 outline-none"
+                            placeholder="email@contoh.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">Pesan</label>
+                    <textarea rows="4"
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-slate-700 bg-transparent focus:ring-2 focus:ring-blue-500 outline-none"
+                        placeholder="Ceritakan tentang proyek Anda..."></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition transform active:scale-95">
+                    Kirim Pesan
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-900 py-8 border-t border-gray-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 <span class="font-bold text-slate-800 dark:text-white">Alex Pratama</span>. Dibuat dengan ❤️
+                dan Kopi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Dark Mode Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Cek preferensi user yang tersimpan
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // 2. Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // 3. Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
+
 </html>
